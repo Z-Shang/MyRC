@@ -1,0 +1,10 @@
+startup_message off
+escape z
+defscrollback 9999
+hardstatus on
+hardstatus alwayslastline
+defencoding gbk
+encoding gbk
+caption always "%{= gw}%-w%{= gW}%n %{= rw}%{-}%+w %-= ;%d/%m/%Y ;%c ;Ave the Parentheses"
+vbell off
+bind w windowlist -b
