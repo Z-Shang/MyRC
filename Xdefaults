@@ -1,0 +1,35 @@
+!!$HOME/.Xdefaults
+URxvt.preeditType:Root
+URxvt.inputMethod:ibus
+URxvt.depth:32
+
+URxvt.title:Terminal
+URxvt.background:[70]#000000
+URxvt.foreground:#00FF00
+URxvt.colorBD:Gray95
+URxvt.colorUL:Green
+URxvt.color1:Red2
+URxvt.color4:RoyalBlue
+URxvt.color5:Magenta2
+URxvt.color8:Gray50
+URxvt.color10:Green2
+URxvt.color12:DodgerBlue
+URxvt.color14:Cyan2
+URxvt.color15:Gray95
+URxvt.urlLauncher:chromium-browser
+URxvt.matcher.button:1
+Urxvt.perl-ext-common:matcher
+URxvt.scrollBar:True
+URxvt.scrollBar_right:True
+URxvt.scrollBar_floating:False
+URxvt.scrollstyle:plain
+URxvt.mouseWheelScrollPage:True
+URxvt.scrollTtyOutput:False
+URxvt.scrollWithBuffer:True
+URxvt.scrollTtyKeypress:True
+URxvt.cursorBlink:True
+URxvt.saveLines:3000
+URxvt.borderLess:False
+Xft.dpi:108
+URxvt.font:xft:Consolas for Powerline:size=12:style=Regular:antialias=true,xft:Consolas for Powerline:size=12:style=Regular:antialias=true
+URxvt.boldfont:xft:Consolas for Powerline:size=12:style=BOld:antialias=true,xft:Consolas for Powerline:size=12:style=Bold:antialias=true
