@@ -147,3 +147,6 @@ imap <C-k> <Esc>k
 imap <C-l> <Esc>l
 imap <C-h> <Esc>h
 imap <C-j> <Esc>j
+
+set laststatus=2
+"let g:Powerline_symbols = 'fancy'
