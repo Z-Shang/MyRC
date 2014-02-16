@@ -55,7 +55,7 @@ precmd () {
 local count_db_wth_char=${#${${(%):-%/}//[[:ascii:]]/}}
 local leftsize=${#${(%):-%M%/}}+$count_db_wth_char
 local rightsize=${#${(%):-%D %T }}
-HBAR="~"
+HBAR="-"
 FILLBAR="\${(l.(($COLUMNS - ($leftsize + $rightsize +2)))..${HBAR}.)}"
 RPROMPT=$(echo "%(?..$RED%?$FINISH)")
 PROMPT=$(echo "$BLUE%M$GREEN%/ $WHITE${(e)FILLBAR} $MAGENTA%D %T$FINISH
@@ -185,5 +185,8 @@ cdpath="/home"
 #}}}
 #Aliases
 alias q='exit'
+alias c='clear'
 alias startswank='sbcl --load /home/zshang/.vim/slime/start-swank.lisp'
 #eval `keychain --eval ~/.ssh/chromium`
+
+MAIL=/var/spool/mail/Z && export MAIL
