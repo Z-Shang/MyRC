@@ -5,7 +5,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
+ZSH_THEME="agnoster"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -36,52 +36,71 @@ source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
 export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
 
-# Lines configured by zsh-newuser-install
-HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
-setopt autocd
-unsetopt notify
-bindkey -v
-# End of lines configured by zsh-newuser-install
-# The following lines were added by compinstall
-zstyle :compinstall filename '/home/stalin/.zshrc'
-
-autoload -U compinit promptinit
+#Color table from: http://www.understudy.net/custom.html
+fg_black=%{$'\e[0;30m'%}
+fg_red=%{$'\e[0;31m'%}
+fg_green=%{$'\e[0;32m'%}
+fg_brown=%{$'\e[0;33m'%}
+fg_blue=%{$'\e[0;34m'%}
+fg_purple=%{$'\e[0;35m'%}
+fg_cyan=%{$'\e[0;36m'%}
+fg_lgray=%{$'\e[0;37m'%}
+fg_dgray=%{$'\e[1;30m'%}
+fg_lred=%{$'\e[1;31m'%}
+fg_lgreen=%{$'\e[1;32m'%}
+fg_yellow=%{$'\e[1;33m'%}
+fg_lblue=%{$'\e[1;34m'%}
+fg_pink=%{$'\e[1;35m'%}
+fg_lcyan=%{$'\e[1;36m'%}
+fg_white=%{$'\e[1;37m'%}
+#Text Background Colors
+bg_red=%{$'\e[0;41m'%}
+bg_green=%{$'\e[0;42m'%}
+bg_brown=%{$'\e[0;43m'%}
+bg_blue=%{$'\e[0;44m'%}
+bg_purple=%{$'\e[0;45m'%}
+bg_cyan=%{$'\e[0;46m'%}
+bg_gray=%{$'\e[0;47m'%}
+#Attributes
+at_normal=%{$'\e[0m'%}
+at_bold=%{$'\e[1m'%}
+at_italics=%{$'\e[3m'%}
+at_underl=%{$'\e[4m'%}
+at_blink=%{$'\e[5m'%}
+at_outline=%{$'\e[6m'%}
+at_reverse=%{$'\e[7m'%}
+at_nondisp=%{$'\e[8m'%}
+at_strike=%{$'\e[9m'%}
+at_boldoff=%{$'\e[22m'%}
+at_italicsoff=%{$'\e[23m'%}
+at_underloff=%{$'\e[24m'%}
+at_blinkoff=%{$'\e[25m'%}
+at_reverseoff=%{$'\e[27m'%}
+at_strikeoff=%{$'\e[29m'%}
+ 
+# PROMPT PIMPIN'
+## Leave the initial line break or else your commands won't have space between them
+#PROMPT="
+#${fg_lgreen}%n@${at_underl}%m${at_underloff}${fg_white}[${fg_cyan}%~${fg_white}]
+#[${fg_green}%T${fg_white}]:${at_normal}"
+ 
+## MAKE DER ZSH SING FOR ITS SUPPER
+autoload -U compinit
 compinit
-promptinit
-# End of lines added by compinstall
-precmd () {
-local count_db_wth_char=${#${${(%):-%/}//[[:ascii:]]/}}
-local leftsize=${#${(%):-%M%/}}+$count_db_wth_char
-local rightsize=${#${(%):-%D %T }}
-HBAR="-"
-FILLBAR="\${(l.(($COLUMNS - ($leftsize + $rightsize +2)))..${HBAR}.)}"
-RPROMPT=$(echo "%(?..$RED%?$FINISH)")
-PROMPT=$(echo "$BLUE%M$GREEN%/ $WHITE${(e)FILLBAR} $MAGENTA%D %T$FINISH
-$CYAN%n $_YELLOW>>>$FINISH ")
-if [[ "$TERM" == "dumb" ]]; then
-setopt No_zle
-PROMPT='%n@%M %/
->>'
-alias ls='ls -F'
-fi
-}
-case $TERM in (*xterm*|*rxvt*|(dt|k|E)term)
-preexec () { print -Pn "\e]0;%n@%M//%/\ $1\a" }
-;;
-esac
-setopt INC_APPEND_HISTORY
-setopt HIST_IGNORE_DUPS
-setopt EXTENDED_HISTORY
-setopt AUTO_PUSHD
-setopt PUSHD_IGNORE_DUPS
-setopt complete_in_word
-
-WORDCHARS='*?_-[]~=&;!#$%^(){}<>'
-
-setopt AUTO_LIST
-setopt AUTO_MENU
+ 
+## Lets set some options
+setopt correctall
+setopt autocd
+setopt auto_resume
+setopt extendedglob
+setopt completeinword
+unsetopt caseglob
+ 
+## Set some ZSH auto complete options
+## zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+## zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
+## zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
+## zstyle ':completion:*:killall:*' command 'ps -u $USER -o cmd'
 
 zstyle ':completion::complete:*' use-cache on
 zstyle ':completion::complete:*' cache-path .zcache
@@ -138,51 +157,15 @@ zstyle ':completion:*:corrections' format $'\e[01;32m -- %d (errors: %e) --\e[0m
 zstyle ':completion:*:-tilde-:*' group-order 'named-directories' 'path-directories' 'users' 'expand'
 #}}}
 
-##行编辑高亮模式 {{{
-# Ctrl+@ 设置标记，标记和光标点之间为 region
-zle_highlight=(region:bg=magenta #选中区域
-special:bold #特殊字符
-isearch:underline)#搜索时使用的关键字
-#}}}
 
-##空行(光标在行首)补全 "cd " {{{
-user-complete(){
-case $BUFFER in
-"" ) # 空行填入 "cd "
-BUFFER="cd "
-zle end-of-line
-zle expand-or-complete
-;;
-"cd " ) # TAB + 空格 替换为 "cd ~"
-BUFFER="cd ~"
-zle end-of-line
-zle expand-or-complete
-;;
-" " )
-BUFFER="!?"
-zle end-of-line
-;;
-"cd --" ) # "cd --" 替换为 "cd +"
-BUFFER="cd +"
-zle end-of-line
-zle expand-or-complete
-;;
-"cd +-" ) # "cd +-" 替换为 "cd -"
-BUFFER="cd -"
-zle end-of-line
-zle expand-or-complete
-;;
-* )
-zle expand-or-complete
-;;
-esac
-}
-zle -N user-complete
-bindkey "\t" user-complete
-
-#显示 path-directories ，避免候选项唯一时直接选中
-cdpath="/home"
-#}}}
+## History stuffs
+HISTFILE=~/.zsh-histfile
+HISTSIZE=5000
+SAVEHIST=5000
+setopt incappendhistory
+setopt sharehistory
+setopt extendedhistory
+ 
 #Aliases
 alias q='exit'
 alias c='clear'
@@ -190,3 +173,5 @@ alias startswank='sbcl --load /home/zshang/.vim/slime/start-swank.lisp'
 #eval `keychain --eval ~/.ssh/chromium`
 
 MAIL=/var/spool/mail/Z && export MAIL
+
+export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libXpm.so.4
