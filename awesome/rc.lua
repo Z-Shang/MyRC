@@ -13,8 +13,10 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 
+xdg_menu = require("archmenu")
+
 -- Load Debian menu entries
-require("debian.menu")
+-- require("debian.menu")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -47,12 +49,12 @@ beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
 awful.util.spawn_with_shell("xcompmgr &")
 awful.util.spawn_with_shell("feh --bg-fill /home/zshang/Wallpaper/1333365662371.jpg &")
 awful.util.spawn_with_shell("nm-applet &")
-awful.util.spawn_with_shell("fcitx ")
-awful.util.spawn_with_shell("xmodmap /home/zshang/swapmeta &")
+awful.util.spawn_with_shell("ibus-daemon -d -x &")
+awful.util.spawn_with_shell("xmodmap /home/zshang/swapmeta")
 --awful.util.spawn_with_shell("xmodmap /home/zshang/swapkeymap")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "urxvt -e screen"
+terminal = "urxvt -e tmux"
 editor = "vim"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -108,10 +110,10 @@ myawesomemenu = {
 }
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-                                    { "Debian", debian.menu.Debian_menu.Debian },
+                                    --{ "Debian", debian.menu.Debian_menu.Debian },
+				    { "Applications", xdgmenu },
                                     { "Terminal", terminal },
-				    { "Chrome", "google-chrome"},
-				    { "Chromium", "chromium-browser"},
+				    { "Chromium", "chromium"},
 				    { "File", "pcmanfm"}
                                   }
                         })
@@ -271,6 +273,7 @@ globalkeys = awful.util.table.join(
 
     -- Standard program
     awful.key({ modkey,           }, "t", function () awful.util.spawn(terminal) end),
+    awful.key({ modkey,           }, "s", function () awful.util.spawn("xfce4-screenshooter") end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
 

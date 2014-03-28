@@ -1,5 +1,5 @@
 -- Standard awesome library
-local assault = require('assault')
+-- local assault = require('assault')
 require("volume")
 local gears = require("gears")
 local awful = require("awful")
@@ -13,8 +13,10 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 
+xdg_menu = require("archmenu")
+
 -- Load Debian menu entries
-require("debian.menu")
+-- require("debian.menu")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -47,12 +49,12 @@ beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
 awful.util.spawn_with_shell("xcompmgr &")
 awful.util.spawn_with_shell("feh --bg-fill /home/zshang/Wallpaper/1333365662371.jpg &")
 awful.util.spawn_with_shell("nm-applet &")
-awful.util.spawn_with_shell("fcitx ")
-awful.util.spawn_with_shell("xmodmap /home/zshang/swapmeta &")
+awful.util.spawn_with_shell("ibus-daemon -d -x &")
+awful.util.spawn_with_shell("xmodmap /home/zshang/swapmeta")
 --awful.util.spawn_with_shell("xmodmap /home/zshang/swapkeymap")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "urxvt -e screen"
+terminal = "urxvt -e tmux"
 editor = "vim"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -108,10 +110,9 @@ myawesomemenu = {
 }
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-                                    { "Debian", debian.menu.Debian_menu.Debian },
+                                    --{ "Debian", debian.menu.Debian_menu.Debian },
                                     { "Terminal", terminal },
-				    { "Chrome", "google-chrome"},
-				    { "Chromium", "chromium-browser"},
+				    { "Chromium", "chromium"},
 				    { "File", "pcmanfm"}
                                   }
                         })
@@ -126,11 +127,11 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- {{{ Wibox
 -- Create a textclock widget
 mytextclock = awful.widget.textclock()
-myassault = assault({
-	critical_level = 0.2,
-	critical_color = "#ff4629",
-	normal_color = beautiful.fg_normal,
-	charging_color = "#0085ce"})
+-- myassault = assault({
+--	critical_level = 0.2,
+--	critical_color = "#ff4629",
+--	normal_color = beautiful.fg_normal,
+--	charging_color = "#0085ce"})
 -- Create a wibox for each screen and add it
 mywibox = {}
 mypromptbox = {}
@@ -209,7 +210,7 @@ for s = 1, screen.count() do
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
     right_layout:add(volume_widget)
-    right_layout:add(myassault)
+  --  right_layout:add(myassault)
     right_layout:add(mytextclock)
     right_layout:add(mylayoutbox[s])
 
@@ -271,6 +272,7 @@ globalkeys = awful.util.table.join(
 
     -- Standard program
     awful.key({ modkey,           }, "t", function () awful.util.spawn(terminal) end),
+    awful.key({ modkey,           }, "s", function () awful.util.spawn("xfce4-screenshooter") end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
 
