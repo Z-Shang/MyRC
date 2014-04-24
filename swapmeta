@@ -1,0 +1,6 @@
+remove Mod1 = Alt_L
+remove Mod4 = Super_L
+keysym Alt_L = Super_L
+keysym Super_L = Alt_L
+add Mod1 = Alt_L
+add Mod4 = Super_L
