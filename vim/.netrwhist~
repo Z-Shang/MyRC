@@ -1,4 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_cnt =6
 let g:netrw_dirhist_1='/home/zshang/.offlineimap'
 let g:netrw_dirhist_2='/home/zshang/MyRC/vim'
+let g:netrw_dirhist_3='/sys/class/power_supply/BAT0'
+let g:netrw_dirhist_4='/home/zshang/.config/awesome'
+let g:netrw_dirhist_5='/home/zshang/.config/chromium/Default/Extensions/mhclhogknmgcaodgkomfeejkjbncgghc'
+let g:netrw_dirhist_6='/home/zshang/.config/chromium/Default/Extensions/mhclhogknmgcaodgkomfeejkjbncgghc/0.3.0.0_0'

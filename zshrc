@@ -172,6 +172,3 @@ alias c='clear'
 alias startswank='sbcl --load /home/zshang/.vim/slime/start-swank.lisp'
 #eval `keychain --eval ~/.ssh/chromium`
 
-MAIL=/var/spool/mail/Z && export MAIL
-
-export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libXpm.so.4

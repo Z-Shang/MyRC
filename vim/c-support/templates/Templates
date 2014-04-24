@@ -2,12 +2,12 @@
 §  User Macros
 § ==========================================================
 
-SetMacro( 'AUTHOR',      'YOUR NAME' )
+SetMacro( 'AUTHOR',      'Z.Shang' )
 SetMacro( 'AUTHORREF',   '' )
 SetMacro( 'COMPANY',     '' )
 SetMacro( 'COPYRIGHT',   '' )
-SetMacro( 'EMAIL',       '' )
-SetMacro( 'LICENSE',     '' )
+SetMacro( 'EMAIL',       'shangzhanlin@gmail.com' )
+SetMacro( 'LICENSE',     'LGPL' )
 SetMacro( 'ORGANIZATION','' )
 
 SetStyle( 'C' )

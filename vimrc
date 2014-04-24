@@ -149,4 +149,5 @@ imap <C-h> <Esc>h
 imap <C-j> <Esc>j
 
 set laststatus=2
-"let g:Powerline_symbols = 'fancy'
+let g:Powerline_symbols = 'fancy'
+let g:airline_powerline_fonts = 1
