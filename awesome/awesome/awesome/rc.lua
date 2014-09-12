@@ -13,7 +13,7 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 
---xdg_menu = require("archmenu")
+xdg_menu = require("archmenu")
 
 -- Load Debian menu entries
 -- require("debian.menu")
@@ -47,12 +47,12 @@ end
 -- Themes define colours, icons, and wallpapers
 beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
 awful.util.spawn_with_shell("xcompmgr &")
-awful.util.spawn_with_shell("feh --bg-scale /home/zshang/Wallpaper/8.jpg &")
+awful.util.spawn_with_shell("feh --bg-fill /home/zshang/Wallpaper/1333365662371.jpg &")
 awful.util.spawn_with_shell("nm-applet &")
 awful.util.spawn_with_shell("fcitx &")
-awful.util.spawn_with_shell("xset -b &")
-awful.util.spawn_with_shell("sleep 5 && xmodmap /home/zshang/swapmeta &")
---awful.util.spawn_with_shell("xmodmap /home/zshang/swapctrl")
+--awful.util.spawn_with_shell("ibus-daemon -d -x &")
+awful.util.spawn_with_shell("sleep 5 && xmodmap /home/zshang/swapmeta")
+--awful.util.spawn_with_shell("xmodmap /home/zshang/swapkeymap")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt -e tmux"
@@ -112,7 +112,7 @@ myawesomemenu = {
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
                                     --{ "Debian", debian.menu.Debian_menu.Debian },
-				    --{ "Applications", xdgmenu },
+				    { "Applications", xdgmenu },
                                     { "Terminal", terminal },
 				    { "Chromium", "chromium"},
 				    { "File", "pcmanfm"}
@@ -242,8 +242,8 @@ globalkeys = awful.util.table.join(
        awful.util.spawn("amixer set Master 9%-", false) end),
     awful.key({ }, "XF86AudioMute", function ()
               awful.util.spawn("amixer -q -D default sset Master toggle", false) end),
-    awful.key({ modkey, "Control" }, "Left",   awful.tag.viewprev       ),
-    awful.key({ modkey, "Control" }, "Right",  awful.tag.viewnext       ),
+    awful.key({ modkey,           }, "[",   awful.tag.viewprev       ),
+    awful.key({ modkey,           }, "]",  awful.tag.viewnext       ),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
 
     awful.key({ modkey,           }, "j",
