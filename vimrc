@@ -1,39 +1,32 @@
-" An example for a vimrc file.
-"
-" Maintainer:	Bram Moolenaar <Bram@vim.org>
-" Last change:	2011 Apr 15
-"
-" To use it, copy it to
-"     for Unix and OS/2:  ~/.vimrc
-"	      for Amiga:  s:.vimrc
-"  for MS-DOS and Win32:  $VIM\_vimrc
-"	    for OpenVMS:  sys$login:.vimrc
-
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
   finish
 endif
 
-" Use Vim settings, rather than Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
 set nocompatible
-"filetype off
+filetype off
 
-"set rtp+=~/.vim/bundle/vundle/
-"call vundle#rc()
+set rtp+=~/.vim/bundle/vundle/
+call vundle#begin()
 
-"Bundle 'gmarik/vundle'
-"Bundle 'tpope/vim-fugitive'
-"Bundle 'Lokaltog/vim-easymotion'
-"Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-"Bundle 'tpope/vim-rails.git'
-"Bundle 'Valloric/YouCompleteMe'
-" vim-scripts repos
-"Bundle 'L9'
-"Bundle 'FuzzyFinder'
-" non github repos
-"Bundle 'git://git.wincent.com/command-t.git'
-" ...
+Plugin 'gmarik/Vundle.vim'
+
+Plugin 'guns/vim-clojure-static'
+Plugin 'tpope/vim-fireplace'
+Plugin 'tpope/vim-classpath'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'kovisoft/slimv'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'ironcamel/vimchat'
+Plugin 'nathanaelkane/vim-indent-guides'
+"Plugin 'clvv/a.vim'
+
+call vundle#end()
+
+filetype plugin indent on
 
 if(has("win32") || has("win95") || has("win64") || has("win16"))
 	    let g:iswindows=1
@@ -55,10 +48,6 @@ set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
 
-" For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
-" let &guioptions = substitute(&guioptions, "t", "", "g")
-
-" Don't use Ex mode, use Q for formatting
 map Q gq
 
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
@@ -119,35 +108,70 @@ if !exists(":DiffOrig")
 		  \ | wincmd p | diffthis
 endif
 
-filetype plugin indent on
-syntax on
-
-" colorscheme desert256
-
 set t_Co=256
 
+"Slimv
 let g:slimv_python = 'python'
 let g:slimv_impl = 'sbcl'
-"let g:slimv_swank_cmd = '! rxvt -e sbcl --load /home/zshang/.vim/slime/start-swank.lisp &'
 let g:lisp_rainbow = 1
 let g:slimv_repl_syntax = 1
 
+"Syntastic
+let g:syntastic_check_on_open = 1
+let g:syntastic_cpp_include_dirs = ['/usr/include/']
+let g:syntastic_cpp_remove_include_errors = 1
+let g:syntastic_cpp_check_header = 1
+let g:syntastic_cpp_compiler = 'clang++'
+let g:syntastic_cpp_auto_refresh_includes = 1
+let g:syntastic_cpp_compiler_options = '-std=c++11 -stdlib=libstdc++'
+let g:Syntastic_cpp_checkers = ['gcc']
+"set error or warning signs
+let g:syntastic_error_symbol = 'X'
+let g:syntastic_warning_symbol = '!'
+"whether to show balloons
+let g:syntastic_enable_balloons = 1
+
+"YCM
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_seed_identifiers_with_syntax = 1
+let g:ycm_confirm_extra_conf = 0
+"Make Syntastic works together with YCM
+let g:ycm_show_diagnostics_ui = 0
+
 set number
-
-:function CNT(port, host)
-":	slient! execute 'sbcl --load /home/zshang/.vim/slime/start-swank.lisp &'
-:	let g:swank_port = a:port
-:	let g:swank_host = a:host
-:	:call SlimvConnectSwank()
-:endfunction
-
-:command -nargs=+ Connect :call CNT(<f-args>)
 
 imap <C-k> <Esc>k
 imap <C-l> <Esc>l
 imap <C-h> <Esc>h
 imap <C-j> <Esc>j
+imap <C-\> lambda
+"imap <C-f> function
 
+"Airline
 set laststatus=2
 let g:Powerline_symbols = 'fancy'
 let g:airline_powerline_fonts = 1
+
+"For Japanese Support
+set fileencodings=gbk,iso-2022-jp,euc-jp,cp932,utf8,default,latin1
+
+syntax on
+
+" size of a hard tabstop
+set tabstop=4
+
+" size of an "indent"
+set shiftwidth=4
+
+" a combination of spaces and tabs are used to simulate tab stops at a width
+" other than the (hard)tabstop
+set softtabstop=4
+
+set ts=4 sw=4 et
+hi IndentGuidesEven ctermbg=1
+hi IndentGuidesOdd  ctermbg=2
+let g:indent_guides_start_level=2
+let g:indent_guides_guide_size=1
+
+filetype plugin indent on
