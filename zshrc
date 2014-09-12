@@ -171,4 +171,3 @@ alias q='exit'
 alias c='clear'
 alias startswank='sbcl --load /home/zshang/.vim/slime/start-swank.lisp'
 #eval `keychain --eval ~/.ssh/chromium`
-
