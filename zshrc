@@ -34,7 +34,9 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/home/zshang/android-sdk-linux/platform-tools:/home/zshang/.gem/ruby/2.1.0/bin
+
+export GOPATH=/home/zshang/.go
 
 #Color table from: http://www.understudy.net/custom.html
 fg_black=%{$'\e[0;30m'%}
@@ -170,4 +172,5 @@ setopt extendedhistory
 alias q='exit'
 alias c='clear'
 alias startswank='sbcl --load /home/zshang/.vim/slime/start-swank.lisp'
+alias emacs='emacs -nw'
 #eval `keychain --eval ~/.ssh/chromium`

@@ -22,6 +22,17 @@ Plugin 'kovisoft/slimv'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'ironcamel/vimchat'
 Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'fatih/vim-go'
+Plugin 'digitaltoad/vim-jade'
+Plugin 'tpope/vim-rails'
+Plugin 'sirver/ultisnips'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'rking/ag.vim'
+Plugin 'shougo/vimproc.vim'
+Plugin 'shougo/vimshell.vim'
+Plugin 'vim-scripts/tagbar'
+Plugin 'w0ng/vim-hybrid'
+Plugin 'honza/vim-snippets'
 "Plugin 'clvv/a.vim'
 
 call vundle#end()
@@ -141,11 +152,15 @@ let g:ycm_show_diagnostics_ui = 0
 
 set number
 
+"Misc Key Mappings
 imap <C-k> <Esc>k
 imap <C-l> <Esc>l
 imap <C-h> <Esc>h
 imap <C-j> <Esc>j
 imap <C-\> lambda
+nmap <C-t> :TagbarToggle<CR>
+nmap <C-l> :NERDTreeToggle<CR>
+nmap <C-i> :IndentGuidesToggle<CR>
 "imap <C-f> function
 
 "Airline
@@ -173,5 +188,17 @@ hi IndentGuidesEven ctermbg=1
 hi IndentGuidesOdd  ctermbg=2
 let g:indent_guides_start_level=2
 let g:indent_guides_guide_size=1
+
+set background=dark
+
+let g:hybrid_use_Xresources = 1
+colorscheme hybrid
+
+"gVIM
+set guifont=SourceCodeProforPowerline\ 12
+set guioptions-=m
+set guioptions-=T
+set guioptions-=r
+set guioptions-=L
 
 filetype plugin indent on

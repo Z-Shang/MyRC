@@ -1,6 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_cnt =5
 let g:netrw_dirhist_1='/home/zshang/Program/LoLi/src/header'
 let g:netrw_dirhist_2='/home/zshang/Program/LoLi/src/LoLi2/include'
 let g:netrw_dirhist_3='/home/zshang/.vim/plugin/fireplace'
 let g:netrw_dirhist_4='/home/zshang/Program/LoLi/src/LoLi2/include'
+let g:netrw_dirhist_5='/usr/share/racket/pkgs/r5rs-lib/r5rs/lang'
