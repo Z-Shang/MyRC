@@ -1,0 +1,1 @@
+/home/zshang/quicklisp/dists/quicklisp/software/slime-2.10.1/start-swank.lisp

@@ -14,44 +14,52 @@ set nocompatible
 
 filetype off
 
+let Plugin_List = [
+            \ 'altercation/vim-colors-solarized', 
+            \ 'clvv/a.vim', 
+            \ 'digitaltoad/vim-jade',
+            \ 'duganchen/vim-soy',
+            \ 'fatih/vim-go',
+            \ 'guns/vim-clojure-static',
+            \ 'honza/vim-snippets',
+            \ 'ironcamel/vimchat',
+            \ 'jistr/vim-nerdtree-tabs',
+            \ 'kchmck/vim-coffee-script',
+            \ 'kien/ctrlp.vim',
+            \ 'kovisoft/slimv',
+            \ 'Lokaltog/vim-easymotion',
+            \ 'mbbill/undotree',
+            \ 'nathanaelkane/vim-indent-guides',
+            \ 'rking/ag.vim',
+            \ 'scrooloose/nerdcommenter',
+            \ 'scrooloose/nerdtree',
+            \ 'scrooloose/syntastic',
+            \ 'shougo/neocomplcache.vim',
+            \ 'shougo/vimproc.vim',
+            \ 'shougo/vimshell.vim',
+            \ 'sirver/ultisnips',
+            \ 'terryma/vim-multiple-cursors',
+            \ 'tomasr/molokai',
+            \ 'tpope/vim-fugitive',
+            \ 'tpope/vim-fireplace',
+            \ 'tpope/vim-rails',
+            \ 'Valloric/YouCompleteMe',
+            \ 'vim-scripts/tagbar',
+            \ 'w0ng/vim-hybrid',
+            \ 'gmarik/Vundle.vim']
 " =========Bundle Managed By Vundle
 set rtp+=~/.vim/bundle/vundle/
 call vundle#begin()
 
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'clvv/a.vim'
-Plugin 'digitaltoad/vim-jade'
-Plugin 'duganchen/vim-soy'
-Plugin 'fatih/vim-go'
-Plugin 'gmarik/Vundle.vim'
-Plugin 'guns/vim-clojure-static'
-Plugin 'honza/vim-snippets'
-Plugin 'ironcamel/vimchat'
-Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'kien/ctrlp.vim'
-Plugin 'kovisoft/slimv'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'mbbill/undotree'
-Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'rking/ag.vim'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
-Plugin 'shougo/neocomplcache.vim'
-Plugin 'shougo/vimproc.vim'
-Plugin 'shougo/vimshell.vim'
-Plugin 'sirver/ultisnips'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'tomasr/molokai'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-fireplace'
-Plugin 'tpope/vim-classpath'
-Plugin 'tpope/vim-rails'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'vim-scripts/tagbar'
-Plugin 'w0ng/vim-hybrid'
-
+for repo in Plugin_List
+    Plugin repo
+endfor
+"Plugin 'guns/vim-sexp'
+"Plugin 'tpope/vim-classpath'
+"Plugin 'tpope/vim-dispatch'
+"Plugin 'tpope/vim-leiningen'
+"Plugin 'tpope/vim-projectionist'
+"Plugin 'typedclojure/vim-typedclojure'
 call vundle#end()
 
 " =========For Japanese Support
