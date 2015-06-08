@@ -16,14 +16,18 @@ filetype off
 
 let Plugin_List = [
             \ 'altercation/vim-colors-solarized', 
+            \ 'bitc/vim-hdevtools',
             \ 'clvv/a.vim', 
             \ 'digitaltoad/vim-jade',
             \ 'duganchen/vim-soy',
+            \ 'eagletmt/ghcmod-vim',
+            \ 'eagletmt/neco-ghc',
             \ 'fatih/vim-go',
+            \ 'fholgado/minibufexpl.vim',
             \ 'guns/vim-clojure-static',
             \ 'honza/vim-snippets',
-            \ 'ironcamel/vimchat',
             \ 'jistr/vim-nerdtree-tabs',
+            \ 'jpalardy/vim-slime',
             \ 'kchmck/vim-coffee-script',
             \ 'kien/ctrlp.vim',
             \ 'kovisoft/slimv',
@@ -44,6 +48,7 @@ let Plugin_List = [
             \ 'tpope/vim-fireplace',
             \ 'tpope/vim-rails',
             \ 'Valloric/YouCompleteMe',
+            \ 'vim-scripts/hlint',
             \ 'vim-scripts/tagbar',
             \ 'w0ng/vim-hybrid',
             \ 'gmarik/Vundle.vim']
@@ -169,6 +174,9 @@ let g:syntastic_error_symbol = 'X'
 let g:syntastic_warning_symbol = '!'
 "whether to show balloons
 let g:syntastic_enable_balloons = 1
+map <silent> <leader>e :Errors<CR>
+map <leader>s :SyntasticToggleMode<CR>
+"let g:syntastic_auto_loc_list=1
 
 " =========YCM
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
@@ -185,9 +193,9 @@ imap <C-h> <Esc>h
 imap <C-j> <Esc>j
 imap <C-\> lambda
 
-nmap <C-t> :TagbarToggle<CR>
 nmap <C-l> :NERDTreeToggle<CR>
-nmap <C-i> :IndentGuidesToggle<CR>
+nmap <C-\> :TagbarToggle<CR>
+nmap <tab> :IndentGuidesToggle<CR>
 
 "imap <C-f> function
 
@@ -203,7 +211,28 @@ hi IndentGuidesOdd  ctermbg=2
 let g:indent_guides_start_level=2
 let g:indent_guides_guide_size=1
 
-"gVIM
+" =========GHC-Mod
+map <silent> tu :call GHC_BrowseAll()<CR>
+map <silent> tw :call GHC_ShowType(1)<CR>
+
+" =========HDevTools
+au FileType haskell nnoremap <buffer> <C-t> :HdevtoolsType<CR>
+au FileType haskell nnoremap <buffer> <silent> <leader>c :HdevtoolsClear<CR>
+au FileType haskell nnoremap <buffer> <silent> <leader>t :HdevtoolsInfo<CR>
+
+" =========Vim-Slime
+let g:slime_target="tmux"
+let g:slime_paste_file=tempname()
+
+" =========PointFree
+autocmd BufEnter *.hs set formatprg=pointfree
+
+" =========Neco Ghc
+autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+autocmd FileType haskell let g:ycm_semantic_triggers = {'haskell' : ['.']}
+let g:necoghc_enable_detailed_browse=1
+
+" =========gVIM
 set guifont=SourceCodeProforPowerline\ 12
 set guioptions-=m
 set guioptions-=T
