@@ -1,10 +1,10 @@
 " 
-"¨€¨€¨€¨€¨€¨€¨€¨[  ¨€¨€¨[   ¨€¨€¨[¨€¨€¨[¨€¨€¨€¨[   ¨€¨€¨€¨[
-"¨^¨T¨T¨€¨€¨€¨X¨a  ¨€¨€¨U   ¨€¨€¨U¨€¨€¨U¨€¨€¨€¨€¨[ ¨€¨€¨€¨€¨U
-"  ¨€¨€¨€¨X¨a   ¨€¨€¨U   ¨€¨€¨U¨€¨€¨U¨€¨€¨X¨€¨€¨€¨€¨X¨€¨€¨U
-" ¨€¨€¨€¨X¨a    ¨^¨€¨€¨[ ¨€¨€¨X¨a¨€¨€¨U¨€¨€¨U¨^¨€¨€¨X¨a¨€¨€¨U
-"¨€¨€¨€¨€¨€¨€¨€¨[¨€¨€¨[¨^¨€¨€¨€¨€¨X¨a ¨€¨€¨U¨€¨€¨U ¨^¨T¨a ¨€¨€¨U
-"¨^¨T¨T¨T¨T¨T¨T¨a¨^¨T¨a ¨^¨T¨T¨T¨a  ¨^¨T¨a¨^¨T¨a     ¨^¨T¨a
+"â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ•—  â–ˆâ–ˆâ•—   â–ˆâ–ˆâ•—â–ˆâ–ˆâ•—â–ˆâ–ˆâ–ˆâ•—   â–ˆâ–ˆâ–ˆâ•—
+"â•šâ•â•â–ˆâ–ˆâ–ˆâ•”â•  â–ˆâ–ˆâ•‘   â–ˆâ–ˆâ•‘â–ˆâ–ˆâ•‘â–ˆâ–ˆâ–ˆâ–ˆâ•— â–ˆâ–ˆâ–ˆâ–ˆâ•‘
+"  â–ˆâ–ˆâ–ˆâ•”â•   â–ˆâ–ˆâ•‘   â–ˆâ–ˆâ•‘â–ˆâ–ˆâ•‘â–ˆâ–ˆâ•”â–ˆâ–ˆâ–ˆâ–ˆâ•”â–ˆâ–ˆâ•‘
+" â–ˆâ–ˆâ–ˆâ•”â•    â•šâ–ˆâ–ˆâ•— â–ˆâ–ˆâ•”â•â–ˆâ–ˆâ•‘â–ˆâ–ˆâ•‘â•šâ–ˆâ–ˆâ•”â•â–ˆâ–ˆâ•‘
+"â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ•—â–ˆâ–ˆâ•—â•šâ–ˆâ–ˆâ–ˆâ–ˆâ•”â• â–ˆâ–ˆâ•‘â–ˆâ–ˆâ•‘ â•šâ•â• â–ˆâ–ˆâ•‘
+"â•šâ•â•â•â•â•â•â•â•šâ•â• â•šâ•â•â•â•  â•šâ•â•â•šâ•â•     â•šâ•â•
 "
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
@@ -17,6 +17,7 @@ filetype off
 let Plugin_List = [
             \ 'altercation/vim-colors-solarized', 
             \ 'bitc/vim-hdevtools',
+            \ 'bling/vim-airline',
             \ 'clvv/a.vim', 
             \ 'digitaltoad/vim-jade',
             \ 'duganchen/vim-soy',
@@ -29,6 +30,7 @@ let Plugin_List = [
             \ 'jistr/vim-nerdtree-tabs',
             \ 'jpalardy/vim-slime',
             \ 'kchmck/vim-coffee-script',
+            \ 'keith/swift.vim',
             \ 'kien/ctrlp.vim',
             \ 'kovisoft/slimv',
             \ 'Lokaltog/vim-easymotion',
@@ -42,6 +44,7 @@ let Plugin_List = [
             \ 'shougo/vimproc.vim',
             \ 'shougo/vimshell.vim',
             \ 'sirver/ultisnips',
+            \ 'sjl/gundo.vim',
             \ 'terryma/vim-multiple-cursors',
             \ 'tomasr/molokai',
             \ 'tpope/vim-fugitive',
@@ -68,7 +71,7 @@ endfor
 call vundle#end()
 
 " =========For Japanese Support
-set fileencodings=gbk,iso-2022-jp,euc-jp,cp932,utf8,default,latin1
+set fileencodings=utf8,gbk,iso-2022-jp,euc-jp,cp932,default,latin1
 
 syntax on
 " size of a hard tabstop
@@ -85,6 +88,7 @@ filetype plugin indent on
 set backspace=indent,eol,start
 
 set number
+set relativenumber
 
 "if has("vms")
 set nobackup		" do not keep a backup file, use versions instead
@@ -152,6 +156,7 @@ if !exists(":DiffOrig")
 endif
 
 set t_Co=256
+set cc=80
 
 " =========Slimv
 let g:slimv_python = 'python2'
@@ -238,3 +243,7 @@ set guioptions-=m
 set guioptions-=T
 set guioptions-=r
 set guioptions-=L
+
+" =========Gundo
+nnoremap <C-u> :GundoToggle<cr>
+
