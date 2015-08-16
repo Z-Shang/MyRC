@@ -36,6 +36,7 @@ let Plugin_List = [
             \ 'Lokaltog/vim-easymotion',
             \ 'mbbill/undotree',
             \ 'nathanaelkane/vim-indent-guides',
+            \ 'ntpeters/vim-better-whitespace',
             \ 'rking/ag.vim',
             \ 'scrooloose/nerdcommenter',
             \ 'scrooloose/nerdtree',
@@ -156,7 +157,7 @@ if !exists(":DiffOrig")
 endif
 
 set t_Co=256
-set cc=80
+"set cc=80
 
 " =========Slimv
 let g:slimv_python = 'python2'
@@ -247,3 +248,7 @@ set guioptions-=L
 " =========Gundo
 nnoremap <C-u> :GundoToggle<cr>
 
+" =========Guide Line
+au WinLeave * set nocursorline nocursorcolumn
+au WinEnter * set cursorline cursorcolumn
+set cursorline cursorcolumn
