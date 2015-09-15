@@ -15,10 +15,11 @@ set nocompatible
 filetype off
 
 let Plugin_List = [
-            \ 'altercation/vim-colors-solarized', 
+            \ 'altercation/vim-colors-solarized',
+            \ 'ap/vim-css-color',
             \ 'bitc/vim-hdevtools',
             \ 'bling/vim-airline',
-            \ 'clvv/a.vim', 
+            \ 'clvv/a.vim',
             \ 'digitaltoad/vim-jade',
             \ 'duganchen/vim-soy',
             \ 'eagletmt/ghcmod-vim',
@@ -33,8 +34,10 @@ let Plugin_List = [
             \ 'keith/swift.vim',
             \ 'kien/ctrlp.vim',
             \ 'kovisoft/slimv',
+            \ 'lervag/vimtex',
             \ 'Lokaltog/vim-easymotion',
             \ 'mbbill/undotree',
+            \ 'mtscout6/vim-cjsx',
             \ 'nathanaelkane/vim-indent-guides',
             \ 'ntpeters/vim-better-whitespace',
             \ 'rking/ag.vim',
@@ -42,6 +45,8 @@ let Plugin_List = [
             \ 'scrooloose/nerdtree',
             \ 'scrooloose/syntastic',
             \ 'shougo/neocomplcache.vim',
+            \ 'Shougo/neosnippet',
+            \ 'Shougo/neosnippet-snippets',
             \ 'shougo/vimproc.vim',
             \ 'shougo/vimshell.vim',
             \ 'sirver/ultisnips',
@@ -54,6 +59,7 @@ let Plugin_List = [
             \ 'Valloric/YouCompleteMe',
             \ 'vim-scripts/hlint',
             \ 'vim-scripts/tagbar',
+            \ 'unblevable/quick-scope',
             \ 'w0ng/vim-hybrid',
             \ 'gmarik/Vundle.vim']
 " =========Bundle Managed By Vundle
@@ -252,3 +258,6 @@ nnoremap <C-u> :GundoToggle<cr>
 au WinLeave * set nocursorline nocursorcolumn
 au WinEnter * set cursorline cursorcolumn
 set cursorline cursorcolumn
+
+" =========Quick Scope
+let g:qs_highlight_on_keys = ['f', 'F']
