@@ -24,3 +24,10 @@
 ! white
 *color7: #707880
 *color15: #C5C8C6
+
+Xft.dpi: 130
+Xft.autohint: 0
+Xtf.lcdfilter: lcddefault
+Xft.hintstyle: hintfull
+Xft.antialias: 1
+Xft.rgba: rga

@@ -31,7 +31,5 @@ URxvt.cursorBlink:True
 URxvt.saveLines:3000
 URxvt.borderLess:False
 Xft.dpi:108
-!URxvt.font:xft:Source Code Pro for Powerline:size=12:style=Regular:antialias=true,xft:Source Code Pro for Powerline:size=12:style=Regular:antialias=true
-URxvt.font:xft:SimHei:size=14:style=Regular:antialias=true,xft:SimHei:size=14:style=Regular:antialias=true
-!URxvt.boldfont:xft:Source Code Pro for Powerline:size=12:style=BOld:antialias=true,xft:Source Code Pro for Powerline:size=12:style=Bold:antialias=true
-URxvt.boldfont:xft:SimHei:size=14:style=BOld:antialias=true,xft:SimHei:size=14:style=Bold:antialias=true
+URxvt.font:xft:Iosevka:size=14:style=Regular:antialias=true,xft:Iosevka:size=14:style=Regular:antialias=true
+URxvt.boldfont:xft:Iosevka:size=14:style=BOld:antialias=true,xft:Iosevka:size=14:style=Bold:antialias=true

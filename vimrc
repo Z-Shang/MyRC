@@ -18,8 +18,8 @@ let Plugin_List = [
             \ 'altercation/vim-colors-solarized',
             \ 'ap/vim-css-color',
             \ 'bitc/vim-hdevtools',
-            \ 'bling/vim-airline',
             \ 'clvv/a.vim',
+            \ 'davidhalter/jedi-vim',
             \ 'digitaltoad/vim-jade',
             \ 'duganchen/vim-soy',
             \ 'eagletmt/ghcmod-vim',
@@ -57,6 +57,8 @@ let Plugin_List = [
             \ 'tpope/vim-fireplace',
             \ 'tpope/vim-rails',
             \ 'Valloric/YouCompleteMe',
+            \ 'vim-airline/vim-airline',
+            \ 'vim-airline/vim-airline-themes',
             \ 'vim-scripts/hlint',
             \ 'vim-scripts/tagbar',
             \ 'unblevable/quick-scope',
@@ -213,6 +215,7 @@ nmap <tab> :IndentGuidesToggle<CR>
 
 " =========Airline
 set laststatus=2
+"let g:airline#extensions#tabline#enabled = 1
 let g:Powerline_symbols = 'fancy'
 let g:airline_powerline_fonts = 1
 
@@ -245,7 +248,7 @@ autocmd FileType haskell let g:ycm_semantic_triggers = {'haskell' : ['.']}
 let g:necoghc_enable_detailed_browse=1
 
 " =========gVIM
-set guifont=SourceCodeProforPowerline\ 12
+set guifont=Iosevka\ 12
 set guioptions-=m
 set guioptions-=T
 set guioptions-=r
